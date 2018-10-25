@@ -26,9 +26,12 @@ export function UserReducer(state: User[] = [initialState], action: UserActions.
 
         case UserActions.USER_LOGIN:
             return state;
-        
+
         case UserActions.USER_SET:
             return state;
+
+        case UserActions.USER_LOGOUT:
+            return [];
 
         default:
             return state;

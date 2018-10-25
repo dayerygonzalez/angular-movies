@@ -11,12 +11,11 @@ import { User, Auth } from 'src/app/models/user';
 @Injectable()
 export class UserEffects {
 
-    constructor(private actions$: Actions, private userService: UserService) {}
+    constructor(private actions$: Actions, private userService: UserService) { }
 
     @Effect({ dispatch: false })
     loadUser$: Observable<Action> = this.actions$.pipe(
         ofType(UserActions.USER_LOAD),
-        
     );
 
     //Login
@@ -32,4 +31,16 @@ export class UserEffects {
             )
         })
     )
+
+
+    //Logout
+    @Effect({ dispatch: false })
+    looutUser$: Observable<Action> = this.actions$.pipe(
+        ofType(UserActions.USER_LOGOUT),
+        tap(() => {
+            localStorage.removeItem('auth');
+        })
+    )
+
+
 }

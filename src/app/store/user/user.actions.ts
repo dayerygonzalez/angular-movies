@@ -5,6 +5,8 @@ import { User } from './../../models/user';
 export const USER_LOAD = '[USER] Load';
 export const USER_LOGIN = '[USER] Login';
 export const USER_SET = '[USER] Set';
+export const USER_LOGOUT = '[USER] Logout';
+
 
 // Actions declaration
 export class UserLoad implements Action {
@@ -20,5 +22,10 @@ export class UserSet implements Action {
     constructor(public user: User) {}
 }
 
+export class UserLogout implements Action {
+    readonly type = USER_LOGOUT;
+   
+}
+
 // Export actions
-export type Actions = UserLoad|UserLogin|UserSet;
+export type Actions = UserLoad|UserLogin|UserSet|UserLogout;
