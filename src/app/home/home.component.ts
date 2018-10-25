@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth, User } from '../models/user';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app.state';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -7,9 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  user: Observable<User>;
+
+  constructor(private store: Store<AppState>) {
+    this.user = store.select('user');
+  }
 
   ngOnInit() {
+  }
+
+  logout() {
   }
 
 }

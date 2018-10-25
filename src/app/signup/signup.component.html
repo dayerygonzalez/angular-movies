@@ -12,13 +12,19 @@
       </div>
       <div class="form__row">
         <label class="form__label" for="email">Email</label>
-        <input class=form__input type="text" id="email" [(ngModel)]="user.email" name="email">
+        <input required class=form__input type="text" id="email" [(ngModel)]="user.email" name="email" #email="ngModel">
+        <p class="form__error" *ngIf="!email.valid">
+          Email is required
+        </p>
       </div>
       <div class="form__row">
         <label class="form__label" for="password">Password</label>
-        <input class=form__input type="password" id="password" [(ngModel)]="user.password" name="password">
+        <input required class=form__input type="password" id="password" [(ngModel)]="user.password" name="password" #password="ngModel">
+        <p class="form__error" *ngIf="!password.valid">
+          Password
+        </p>
       </div>
-      <button [disabled]="!signupForm.form.valid || this.loading" type="submit" class="btn btn_block" [class.btn_loading]="loading">Crear cuenta</button>
+      <button [disabled]="this.loading" type="submit" class="btn btn_block" [class.btn_loading]="loading">Crear cuenta</button>
     </form>
   </div>
 </main>

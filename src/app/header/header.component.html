@@ -1,11 +1,15 @@
 <header class="header container">
   <div class="container__inner">
-    <nav class="nav nav_main">
+    <nav *ngIf="!user" class="nav nav_main">
       <ul class="nav__items">
         <li class="nav__item"><a routerLink="/signup">Signup</a></li>
         <li class="nav__item">Login</li>
       </ul>
     </nav>
+    <div *ngIf="user">
+      <p *ngIf="user._id">Hola {{ user.username }}</p>
+      <button class="btn" (click)="logout()">Cerrar sesión</button>
+    </div>
     <div class="hero">
       <h1 class="hero__title">
         <a routerLink="/home" class="hero__link"><img src="assets/img/logo-nav@2x.png" class="hero__logo" alt="Angular" /> Movie Database</a>
